@@ -1,0 +1,96 @@
+<html>
+<head>
+    <title>
+        Fullscreen API Demo
+    </title>
+    <style>
+        .center {
+            text-align: center;
+        }
+
+        .buttons {
+            margin-top: 15px;
+        }
+
+        :fullscreen body {
+            background-color: darkgray;
+        }
+
+        :fullscreen button {
+            background-color: yellow;
+            font-weight: bolder;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="center">Fullscreen API Demo</h1>
+
+    <div class="center">
+        <video controls id="myvideo" width="200" height="200">
+            <source src="resources/earth-sample.mp4"></source>     
+        </video>
+    </div>
+
+    <div class= "center buttons">
+        <button id="enterVideoFullScreen"
+                onclick="launchFullScreenMode(document.getElementById('myvideo'))">
+            Play Video in Fullscreen
+        </button>
+        <button id="enterFullScreen"
+                onclick="launchFullScreenMode(document.documentElement)">
+            Enter Fullscreen
+        </button>
+        <button id="exitFullScreen"
+                onclick="exitFullScreenMode()">
+            Exit Fullscreen
+        </button>
+    </div>
+
+    <script>
+
+        // Track Full Screen Change events
+        document.onfullscreenchange = function(event) {
+            const element = document.fullscreenElement;
+            if (element) {
+                console.log('Enter Full Screen Event occurred', element);
+            } else {
+                console.log('Exit Full Screen Event occurred', element);
+            }
+        }
+
+        /**
+        * Enter the full screen mode.
+        * 
+        */
+        function launchFullScreenMode(element) {
+            if(!document.fullscreenEnabled) { // if the full screen mode is not supported
+                alert("Full Screen Mode is not supported");
+                return;
+            }
+
+            if(element.requestFullscreen) { // if we can request a full screen for the video element    
+                    element
+                    .requestFullscreen() /// give a promise
+                    .then(() => {
+                        console.log('We are in a full screen mode');
+                    })
+            }
+        }
+
+        /**
+        * Exit the full screen mode.
+        */
+        function exitFullScreenMode() {
+            if(document.exitFullscreen) {
+                document
+                .exitFullscreen() // promise
+                .then( () => {
+                    console.log('We have exited the full screen mode');
+                });
+            }           
+        }
+
+    </script>
+  
+</body>
+</html>
