@@ -1,0 +1,20 @@
+{
+  "name": "javascript-concepts",
+  "version": "1.0.0",
+  "description": "JavaScript Concepts Tutorial",
+  "main": "memoized-functions.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "javascript",
+    "concepts"
+  ],
+  "author": "Vinay Dubey",
+  "license": "ISC",
+  "dependencies": {
+    "btoa": "^1.2.1",
+    "node-fetch": "^2.6.1"
+  }
+}
