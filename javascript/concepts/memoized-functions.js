@@ -36,7 +36,7 @@ function isPrime(number) {
         return 0;
     }
     if (number > 1) {
-        let isPrime = false;
+        let isPrime = true;
         // looping through 2 to number-1
         for (let i = 2; i < number; i++) {
             if (number % i === 0) {
