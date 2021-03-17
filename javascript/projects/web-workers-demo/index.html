@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+        <style>
+            body {
+                padding: 10px;
+            }
+            div.area > div.well{
+                margin: 25px;
+                background-color: #ffffff;
+            }
+            .result {
+                padding-top:10px;
+                font-size:20px;
+                color:gray
+            }
+            .btn-custom {
+                margin-top: 10px;
+            }
+            .title {
+                text-align: center;
+                font-weight: bold;
+            }
+            .web-work-definition {
+                padding:40px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="area">
+            <h1 class="title">Web Workers Demo</h1>
+            <div class= "jumbotron web-work-definition">
+                <h2 class="bold">
+                    Definition from Mozilla
+                </h2>
+                <p>
+                    Web Workers makes it possible to run a script operation in a background thread separate from the main execution thread of a web application. 
+                    The advantage of this is that laborious processing can be performed in a separate thread, allowing the main (usually the UI) thread to run without being blocked/slowed down.
+                </p>
+            </div>
+            <div class="row well">
+                <div class="col-md-6">
+                    <div class="row">
+                        <h2>Prime Numbers</h2>
+                        <h4>Find total number of prime numbers till the given number.</h4>
+                    </div>
+                    <div class="row">
+                        <input id="prime-input" type="number" class="form-control" placeholder="Type Number here" required/>
+                    </div>
+                    <div class="row pull-right">
+                        <button id="find-primes" 
+                                class="btn btn-primary btn-custom"
+                                onclick="postMessageToWorker(document.getElementById('prime-input').value)">
+                                Find Primes
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h2>Result</h2>
+                    <div id="prime-numbers-result" class="result">
+                        Please type a number.
+                    </div>
+                </div>
+            </div>
+            <div class="row well">
+                <div class="col-md-6">
+                    <div class="row">
+                        <h2>Convert Fraction to Percentage</h2>
+                    </div>
+                    <div class="row">
+                        <div class="input-group">
+                            <input id="perc-input-1" type="number" class="form-control" placeholder="Type Number here" required/>
+                            <span class="input-group-addon" id="basic-addon1">/</span>
+                            <input id="perc-input-2" type="number" class="form-control" placeholder="Type Number here" required/>
+                        </div>
+                    </div>
+                    <div class="row pull-right">
+                        <button id="find-percentage" class="btn btn-primary btn-custom" 
+                        onclick="findPercentage(document.getElementById('perc-input-1').value, document.getElementById('perc-input-2').value)">
+                            Find Percentage
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h2>Result</h2>
+                    <div id="percentage_result" class="result">
+                        Please type the numbers
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="main.js"></script>
+    </body>
+</html>
