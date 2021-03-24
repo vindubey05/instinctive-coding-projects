@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <style>
+            h1 {
+                color: red;
+            }
+            div#text-id {
+                font-size: 18px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>DOM Tutorial</h1>
+        <div id="text-id">
+            <div>Today we will learn DOM.</div>
+        </div>
+        <div id="counter"></div>
+        <script>
+            var counter = 0;
+            console.log(document);
+            document.addEventListener('click', function() {
+                document.getElementById('counter').innerText = ++counter;
+            });
+        </script>
+    </body>
+</html>
+
+<!--
+    document
+        html
+            head
+                 style
+                    text = h1...........
+            body
+                h1
+                    text = DOM Tutorial
+                div attribute id =text-id
+                    div
+                        text = today we will learn DOM
+-->
