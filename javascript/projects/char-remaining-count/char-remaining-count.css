@@ -1,0 +1,8 @@
+.char-remaining-count {
+    color:blue;
+    text-align:right;
+}
+
+.char-remaining-count::after {
+    content: ' remaining characters';
+}

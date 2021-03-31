@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <style>
+            .frame {
+                padding: 20px;
+            }
+            
+            .form-group label{
+                font-weight: bold;
+            }
+
+            form {
+                padding-top: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container frame">
+            <h1>Survey Form</h1>
+            <form>
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" class="form-control" id="fullName" placeholder="Enter Your Name">
+                </div>
+                <div class="form-group">
+                  <label for="email-address">Email address</label>
+                  <input type="email" class="form-control" id="email-address" placeholder="Enter Your Email">
+                </div>
+                <div class="form-group">
+                    <label for="liveIn">Where do you live in?</label>
+                    <input type="text" class="form-control" id="liveIn" placeholder="Enter here" maxlength="50">
+                </div>
+                <div class="form-group">
+                  <label for="experience">Describe Your Experience with the Product?</label>
+                  <textarea class="form-control" 
+                            id="experience" 
+                            rows="3" 
+                            placeholder="Enter here" 
+                            maxlength="500"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="comments">Do you have any other comments?</label>
+                    <textarea class="form-control" 
+                              id="comments" 
+                              rows=3
+                              placeholder="Enter here" 
+                              maxlength="100" >I have no comments</textarea>
+                </div>
+                <button class="form-control btn btn-primary">Submit</button>
+            </form>
+        </div>
+        <script src="char-remaining-count.js"></script>
+        <script>
+            configCharCount({color:'red'});
+        </script>
+    </body>
+</html>
