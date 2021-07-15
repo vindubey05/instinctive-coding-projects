@@ -1,0 +1,113 @@
+<html>
+    <head>
+        <style>
+            h1 {
+                font-style:bolder;
+                text-align: center;
+            }
+            p {
+                font-size: 24px;
+                text-align: center;
+            }
+            div.buttons {
+                text-align: center;
+            }
+
+            button {
+                height: 50px;
+                width: 150px;
+                background-color:#6e9ae6;
+                color:white;
+                font-size: 16px;
+                font-weight: bold;
+                border-color:#6e9ae6
+            }
+            div#result {
+               text-align: center;
+               color: blue;
+               font-size: 24px;
+               padding-top:20px;
+               padding-bottom:20px; 
+            }
+            div.channel-info {
+               text-align: center;
+               color: red;
+               font-size: 24px;
+               padding-top:10px;
+            }
+            div.channel-info > div {
+                padding:10px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Notification API Demo</h1>
+        <div class="channel-info">
+            <img src="https://yt3.ggpht.com/ytc/AKedOLQf98ZMelRYpZoKJJYPPyfYHFwijO3002aZAgdX=s176-c-k-c0x00ffffff-no-rj" />
+            <div>
+                <pre>Please <strong>SUBSCRIBE</strong> to support this channel.</pre>
+            </div>
+        </div>
+        <p>
+            In this tutorial, we will learn about sending notifications to the browser.
+        </p>
+        <div class="buttons">
+            <button id="startTask" onclick="startTask()">Start Task</button>
+        </div>
+        <div id="result"></div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                requestNotificationPermission();
+            })
+
+            function requestNotificationPermission() {
+                if(Notification && !isPermissionGranted()){
+                    Notification.requestPermission().then(function(result){
+                        console.log('Permission status', result); // granted, denied, default
+                    });
+                }                
+            }
+
+            function isPermissionGranted(){
+                return (Notification && Notification.permission === "granted");
+            }
+
+            function showNotification(icon, title, body){
+               const notification = new Notification(title,{
+                   icon,
+                   body,
+                   vibrate:2000,
+               });
+
+               notification.onclick = function(e){
+                   window.focus();
+               }
+
+               notification.onclose = function(e){
+                   console.log("Closing Notification");
+               }
+
+               document.addEventListener("visibilitychange", function(){
+                   if(document.visibilityState === 'visible'){
+                       notification.close();
+                   }
+               })
+            }
+
+            function startTask(){
+                document.getElementById("startTask").disabled = true;
+                document.getElementById("result").innerText = "Task Started! To view the notification, go to a different tab or minimize the browser!"
+                setTimeout(() => {
+                    console.log("executing task");
+                    document.getElementById("result").innerText = "Task Completed Successfully! You should have recieved the notification if the web page was not visible."
+                    document.getElementById("startTask").disabled = false;    
+                    if(document.visibilityState !== 'visible' && isPermissionGranted()) {
+                    // show desktop notification
+                    showNotification("https://yt3.ggpht.com/ytc/AKedOLQf98ZMelRYpZoKJJYPPyfYHFwijO3002aZAgdX=s176-c-k-c0x00ffffff-no-rj", "The Coding Concepts Notification", "Dummy Task completed successfully");
+                    }          
+                }, 8000);
+            }
+        </script>
+    </body>
+
+</html>
